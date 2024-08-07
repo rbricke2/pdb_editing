@@ -19,3 +19,5 @@ with open(input_file) as pdb:
         line_split = line.split()
         if line_split[0] == "HETATM":
             output_file.write(line.replace("HETATM", "ATOM  "))
+        else:
+            output_file.write(line)
