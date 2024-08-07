@@ -1,16 +1,22 @@
 """
    usage: python3 fix_15_mer_pdb_and_extract_residue.py
       1. [path file to pdb file of 15-mer with modified thymine]
-      2. [path file to fixed pdb file of 15-mer with modified thymine]
-      3. [path file to pdb file of modified thymine w/ sugar]
+      2. [optional: path file to fixed pdb file of 15-mer with modified thymine]
+      3. [optional: path file to pdb file of modified thymine w/ sugar]
 """
 
 import sys
 
 # command line inputs
 input_file = sys.argv[1]
-fixed_file = sys.argv[2]
-mod_file   = sys.argv[3]
+if len(sys.argv) == 3:
+    fixed_file = sys.argv[2]
+else:
+    fixed_file = "fixed_pdb_file.pdb"
+if len(sys.argv) == 4:
+    mod_file = sys.argv[3]
+else:
+    mod_file = "modified_thymine.pdb"
 
 # get lines for the modified thymine
 modified_T = []

@@ -1,16 +1,19 @@
 """
    usage: python3 HETATM_to_ATOM.py
       1. [path file to pdb file]
-      2. [path file to fixed pdb]
+      2. [optional: path file to edited pdb]
 """
 
 import sys
 
 # command line inputs
 input_file = sys.argv[1]
-fixed_file = sys.argv[2]
+if len(sys.argv) == 3:
+    edited_file = sys.argv[2]
+else:
+    edited_file = "edited_pdb_file.pdb"
 
-output_file = open(fixed_file, "w")
+output_file = open(edited_file, "w")
 with open(input_file) as pdb:
     for line in pdb:
         line_split = line.split()
