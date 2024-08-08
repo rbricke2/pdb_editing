@@ -14,8 +14,10 @@ if len(sys.argv) == 3:
 else:
     fixed_file = "fixed_pdb_file.pdb"
 if len(sys.argv) == 4:
+    fixed_file = sys.argv[2]
     mod_file = sys.argv[3]
 else:
+    fixed_file = "fixed_pdb_file.pdb"
     mod_file = "modified_thymine.pdb"
 
 # get lines for the modified thymine
