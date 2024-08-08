@@ -17,7 +17,8 @@ output_file = open(edited_file, "w")
 with open(input_file) as pdb:
     for line in pdb:
         line_split = line.split()
-        if line_split[0] == "HETATM":
-            output_file.write(line.replace("HETATM", "ATOM  "))
-        else:
-            output_file.write(line)
+        if (line_split[0] != "REMARK") & (line_split[0] != "TER"):
+            if line_split[0] == "HETATM":
+                output_file.write(line.replace("HETATM", "ATOM  "))
+            else:
+                output_file.write(line)
