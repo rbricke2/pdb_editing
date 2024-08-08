@@ -29,8 +29,8 @@ with open(input_file) as pdb:
                     list_line[6:11]      = atom_serial_num_char.rjust(5)
                     new_line             = "".join(list_line)
                     output_file.write(new_line)
-		    atom_serial_num += 1
-		    output_file.write("TER      " + str(atom_serial_num) + "      UNK     2 ")
+                    atom_serial_num += 1
+                    output_file.write("TER      " + str(atom_serial_num) + "      UNK     2 \n")
                     continue
             output_file.write(line)
 
