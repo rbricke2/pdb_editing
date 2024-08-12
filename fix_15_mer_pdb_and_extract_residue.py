@@ -15,10 +15,10 @@ else:
     fixed_file = "fixed_pdb_file.pdb"
 if len(sys.argv) == 4:
     fixed_file = sys.argv[2]
-    mod_file = sys.argv[3]
+    mod_file   = sys.argv[3]
 else:
     fixed_file = "fixed_pdb_file.pdb"
-    mod_file = "modified_thymine.pdb"
+    mod_file   = "modified_thymine.pdb"
 
 # get lines for the modified thymine
 modified_T = []
@@ -53,7 +53,7 @@ with open(input_file) as pdb:
                 if line_split[2] == "UNK":
                     start_copying = True
 
-fixed_file = open(fixed_file, "w")
+fixed_file = open(fixed_file, "w+")
 atom_serial_num = 1
 for i in range(len(new_pdb)):
     line = ""
@@ -72,7 +72,7 @@ for i in range(len(new_pdb)):
     else:
         fixed_file.write(line)
 
-modified_thymine = open(mod_file, "w")
+modified_thymine = open(mod_file, "w+")
 atom_serial_num = 1
 for i in range(len(modified_T)):
     line = ""

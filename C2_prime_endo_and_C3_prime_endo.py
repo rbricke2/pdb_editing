@@ -1,8 +1,8 @@
 """
-   usage: python3 C2_prime_endo_and_C3_prime_endo.py
-      1. [path file to C2' endo conformation pdb file]
-	  2. [path file to C3' endo conformation pdb file]
-      3. [optional: path file to combined pdb]
+    usage: python3 C2_prime_endo_and_C3_prime_endo.py
+        1. [path file to C2' endo conformation pdb file]
+        2. [path file to C3' endo conformation pdb file]
+        3. [optional: path file to combined pdb]
 """
 
 import sys
@@ -11,7 +11,7 @@ import sys
 C2endo_file = sys.argv[1]
 C3endo_file = sys.argv[2]
 if len(sys.argv) == 4:
-    combined_file_file = sys.argv[3]
+    combined_file = sys.argv[3]
 else:
     combined_file = "C2endo_and_C3endo.pdb"
 
@@ -40,14 +40,14 @@ def write_lines(output_file, lines):
                 output_file.write(line)
 
 # get lines for C2' endo conformation
-C2endo = get_lines("C2endo_relaxed.pdb")
+C2endo = get_lines(C2endo_file)
 # get lines for C3' endo conformation
-C3endo = get_lines("C3endo.pdb")
+C3endo = get_lines(C3endo_file)
 
 # write new file
-output_file = open(combined_file, "w")
-output_file.write("MODEL 1\n")
-write_lines(output_file, C2endo)
-output_file.write("ENDMDL\nMODEL 2\n")
-write_lines(output_file, C3endo)
-output_file.write("ENDMDL\n")
+with open(combined_file, "w+") as output_file:
+    output_file.write("MODEL 1\n")
+    write_lines(output_file, C2endo)
+    output_file.write("ENDMDL\nMODEL 2\n")
+    write_lines(output_file, C3endo)
+    output_file.write("ENDMDL\n")

@@ -13,7 +13,7 @@ if len(sys.argv) == 3:
 else:
     edited_file = "edited_pdb_file.pdb"
 
-output_file = open(edited_file, "w")
+output_file = open(edited_file, "w+")
 with open(input_file) as pdb:
     for line in pdb:
         line_split = line.split()

@@ -17,7 +17,7 @@ else:
     edited_file = "edited_pdb_file.pdb"
 
 atom_serial_num = 0
-output_file     = open(edited_file, "w")
+output_file     = open(edited_file, "w+")
 with open(input_file) as pdb:
     for line in pdb:
         line_split = line.split()
