@@ -34,10 +34,16 @@ def write_lines(output_file, lines):
     for line in lines:
         line_split = line.split()
         if (line_split[0] != "REMARK") & (line_split[0] != "TER"):
+            new_line = line
             if line_split[0] == "HETATM":
-                output_file.write(line.replace("HETATM", "ATOM  "))
-            else:
-                output_file.write(line)
+                new_line = line.replace("HETATM", "ATOM  ")
+            if ("H" in line_split[2]) and ("'" in line_split[2]) and (len(line_split[2]) == 4):
+                list_line = list(new_line)
+                name = list_line[12:16]
+                name.append(name.pop(0))
+                list_line[12:16] = name
+                new_line = "".join(list_line)
+            output_file.write(new_line)
 
 # get lines for C2' endo conformation
 C2endo = get_lines(C2endo_file)
