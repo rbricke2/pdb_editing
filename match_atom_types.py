@@ -30,7 +30,6 @@ with open(RED_file, "r") as RED:
 lines          = []
 check          = False
 done           = False
-write_new_file = False
 with open(mol2_file, "r") as file:
     for line in file:
         write_line = line
@@ -40,7 +39,6 @@ with open(mol2_file, "r") as file:
                 if line_split[1] in atoms_dict:
                     if atoms_dict[line_split[1]] != line_split[5]: # atoms don't match
                         write_line = line.replace(line_split[5], atoms_dict[line_split[1]])
-                        write_new_file = True
             elif line_split:
                 if (line_split[0] == "@<TRIPOS>ATOM"):
                     check = True
@@ -48,9 +46,6 @@ with open(mol2_file, "r") as file:
                     done  = True
         lines.append(write_line)
 
-if write_new_file:
-    with open(new_file, "w+") as file:
-        for line in lines:
-            file.write(line)
-else:
-    print("All atom types match; no need to create a new file.")
+ with open(new_file, "w+") as file:
+     for line in lines:
+         file.write(line)
