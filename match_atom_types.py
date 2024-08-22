@@ -27,9 +27,9 @@ with open(RED_file, "r") as RED:
                 break
 
 # Get lines for new file
-lines          = []
-check          = False
-done           = False
+lines = []
+check = False
+done  = False
 with open(mol2_file, "r") as file:
     for line in file:
         write_line = line
